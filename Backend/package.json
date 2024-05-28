@@ -16,7 +16,8 @@
     "lodasync": "^1.0.7",
     "nodemon": "^2.0.9",
     "pg": "^8.6.0",
-    "surge": "^0.23.0"
+    "surge": "^0.23.0",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "supertest": "^6.1.3"
