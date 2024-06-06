@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.a65a4397.chunk.css",
+    "main.js": "/static/js/main.8c762b21.chunk.js",
+    "main.js.map": "/static/js/main.8c762b21.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.41681eb1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.41681eb1.js.map",
+    "static/js/2.d3a3536d.chunk.js": "/static/js/2.d3a3536d.chunk.js",
+    "static/js/2.d3a3536d.chunk.js.map": "/static/js/2.d3a3536d.chunk.js.map",
+    "static/js/3.9b8ceb69.chunk.js": "/static/js/3.9b8ceb69.chunk.js",
+    "static/js/3.9b8ceb69.chunk.js.map": "/static/js/3.9b8ceb69.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.a65a4397.chunk.css.map": "/static/css/main.a65a4397.chunk.css.map",
+    "static/js/2.d3a3536d.chunk.js.LICENSE.txt": "/static/js/2.d3a3536d.chunk.js.LICENSE.txt",
+    "static/media/background.jpg": "/static/media/background.45ef2e51.jpg",
+    "static/media/gd.d258914a.png": "/static/media/gd.d258914a.png",
+    "static/media/skeleton.png": "/static/media/skeleton.648132c1.png",
+    "static/media/stealie.png": "/static/media/stealie.091d4612.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.41681eb1.js",
+    "static/js/2.d3a3536d.chunk.js",
+    "static/css/main.a65a4397.chunk.css",
+    "static/js/main.8c762b21.chunk.js"
+  ]
+}
