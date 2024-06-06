@@ -1,15 +1,21 @@
+/*
+ * Copyright (c) 2024 Lindsey Reams
+ * The Grateful Deadabase is licensed under the
+ * Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+ * For details, see the accompanying LICENSE.txt file or visit:
+ * http://creativecommons.org/licenses/by-nc-sa/4.0/
+ */
 const express = require("express");
 const Song = require("../Models/Song");
 const songsRouter = new express.Router();
 
 songsRouter.get("/", async (req, res, next) => {
-    try {
-        const songs = await Song.getByFilter(req.query);
-        return res.json({ songs });
-
-    } catch (e) {
-        return next(e);
-    }
-})
+  try {
+    const songs = await Song.getByFilter(req.query);
+    return res.json({ songs });
+  } catch (e) {
+    return next(e);
+  }
+});
 
 module.exports = songsRouter;
