@@ -56,7 +56,12 @@ async function seedSetlists() {
   const setlists = await getAllSetlists();
   for (let setlist of setlists) {
     //check if venue is already in db;
-    let venue_obj = await Venue.getByName(setlist.venue.name);
+    // Need to check by at least name and state
+    // --> Capitol Theater in both Passaic, NJ and Port Chester, NY
+    let venue_obj = await Venue.getByNameAndState(
+      setlist.venue.name,
+      setlist.venue.city.state
+    );
     if (!venue_obj) {
       venue_obj = await Venue.create(
         setlist.venue.name,
@@ -67,18 +72,35 @@ async function seedSetlists() {
     }
 
     //check if tour is alredy in db;
-    let tour = setlist.tour ? setlist.tour.name : undefined;
+    let tour_obj;
+    if (setlist.tour) {
+      tour_obj = await Tour.getByName(setlist.tour.name);
+
+      if (!tour_obj) {
+        tour_obj = await Tour.create(setlist.tour.name);
+      }
+    } else {
+      tour_obj = undefined;
+    }
 
     let day = setlist.eventDate.slice(0, 2);
     let month = setlist.eventDate.slice(3, 5);
     let year = setlist.eventDate.slice(6);
-    let setlist_obj = await Setlist.create(venue_obj, tour, day, month, year);
+    let setlist_obj = await Setlist.create(
+      venue_obj,
+      tour_obj,
+      day,
+      month,
+      year
+    );
 
     // seed recordings of setlist from archive.org
     await pause(2000);
     try {
       await seed_recordings(setlist_obj);
-    } catch {}
+    } catch {
+      console.log("error seeding recording", setlist_obj);
+    }
     //for each set in setlist create set object
 
     for (let set of setlist.sets.set) {

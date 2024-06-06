@@ -6,7 +6,6 @@
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 const db = require("../db");
-const Setlist = require("./Setlist");
 const { sqlForSetlistFilters } = require("../helpers");
 
 class Song {

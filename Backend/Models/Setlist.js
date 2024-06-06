@@ -25,9 +25,9 @@ class Setlist {
 
   static async create(venue, tour, day, month, year) {
     const result = await db.query(
-      `INSERT INTO setlist (venue_id, tour, day, month, year)
+      `INSERT INTO setlist (venue_id, tour_id, day, month, year)
             VALUES ($1, $2, $3, $4, $5) RETURNING id `,
-      [venue.id, tour, day, month, year]
+      [venue.id, tour?.id, day, month, year]
     );
 
     let { id } = result.rows[0];
@@ -62,7 +62,7 @@ class Setlist {
       values,
     } = sqlForSetlistFilters(filters);
     console.log(filters);
-    const sqlQuery = `SELECT DISTINCT setlist.id, setlist.venue_id, setlist.tour, setlist.year, setlist.month, setlist.day FROM setlist
+    const sqlQuery = `SELECT DISTINCT setlist.id, setlist.venue_id, setlist.tour_id, setlist.year, setlist.month, setlist.day FROM setlist
             ${[...joinStatements].join(" ")}
            ${whereConditions}
            ORDER BY setlist.year, setlist.month, setlist.day

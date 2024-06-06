@@ -43,6 +43,21 @@ class Venue {
     }
   }
 
+  static async getByNameAndState(name, state) {
+    const result = await db.query(
+      `SELECT id, name, city, state, country FROM venue
+            WHERE name = $1
+            AND state = $2`,
+      [name, state]
+    );
+    if (result.rows.length === 0) {
+      return null;
+    } else {
+      let { id, name, city, state, country } = result.rows[0];
+      return new Venue(id, name, city, state, country);
+    }
+  }
+
   static async getById(id) {
     const result = await db.query(
       `SELECT id, name, city, state, country FROM venue

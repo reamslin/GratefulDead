@@ -17,10 +17,15 @@ CREATE TABLE venue(
     country TEXT
 );
 
+CREATE TABLE tour(
+    id SERIAL PRIMARY KEY,
+    name TEXT
+);
+
 CREATE TABLE setlist(
     id SERIAL PRIMARY KEY,
     venue_id INTEGER REFERENCES venue,
-    tour TEXT,
+    tour_id INTEGER REFERENCES tour,
     day TEXT,
     month TEXT,
     year TEXT

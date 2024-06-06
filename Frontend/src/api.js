@@ -7,7 +7,7 @@
  */
 const axios = require("axios");
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://gddb-b7baf449e62a.herokuapp.com";
 
 class GDApi {
   static async getSetlistById(id) {
@@ -54,6 +54,11 @@ class GDApi {
   static async getVenues(filters) {
     let res = await axios.get(`${BASE_URL}/venues`, { params: filters });
     return res.data.venues;
+  }
+
+  static async getTours(filters) {
+    let res = await axios.get(`${BASE_URL}/tours`, { params: filters });
+    return res.data.tours;
   }
 
   static async getCovers(filters) {

@@ -10,6 +10,7 @@ const ExpressError = require("./Models/ExpressError");
 function sqlForSetlistFilters(filters) {
   const acceptedFilters = [
     "venue",
+    "tour",
     "city",
     "state",
     "country",
@@ -24,6 +25,7 @@ function sqlForSetlistFilters(filters) {
   ];
   const keys = Object.keys(filters);
   keys.forEach((key) => {
+    console.log(key);
     let index = acceptedFilters.indexOf(key);
     if (index == -1) {
       throw new ExpressError("Bad query request", 400);
@@ -49,6 +51,8 @@ function sqlForSetlistFilters(filters) {
       return `song.title = $${idx + 1}`;
     } else if (filterName === "venue") {
       return `venue.name = $${idx + 1}`;
+    } else if (filterName === "tour") {
+      return `tour.name = $${idx + 1}`;
     } else if (filterName === "cover") {
       return `song.cover = $${idx + 1}`;
     } else if (filterName === "performer") {
@@ -77,6 +81,7 @@ function sqlForSetlistFilters(filters) {
   let state_id = keys.indexOf("state");
   let city_id = keys.indexOf("city");
   let country_id = keys.indexOf("country");
+  let tour_id = keys.indexOf("tour");
 
   if (
     venue_id !== -1 ||
@@ -85,6 +90,10 @@ function sqlForSetlistFilters(filters) {
     country_id !== -1
   ) {
     joinStatements.add(`INNER JOIN venue ON venue.id = setlist.venue_id`);
+  }
+
+  if (tour_id !== -1) {
+    joinStatements.add(`INNER JOIN tour ON tour.id = setlist.tour_id`);
   }
 
   let song_id = keys.indexOf("song");

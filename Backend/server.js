@@ -12,6 +12,7 @@ const songsRouter = require("./Routes/songs");
 const venuesRouter = require("./Routes/venues");
 const coversRouter = require("./Routes/covers");
 const notesRouter = require("./Routes/notes");
+const toursRouter = require("./Routes/tours");
 const cors = require("cors");
 
 const PORT = +process.env.PORT || 3001;
@@ -25,6 +26,7 @@ app.use("/songs", songsRouter);
 app.use("/venues", venuesRouter);
 app.use("/covers", coversRouter);
 app.use("/notes", notesRouter);
+app.use("/tours", toursRouter);
 
 app.get("/", (req, res, next) => {
   res.json("Ladies and Gentlemen, The Grateful Dead");

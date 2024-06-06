@@ -7,7 +7,7 @@
  */
 const { Client } = require("pg");
 
-let DB_URI = process.env.HEROKU_POSTGRESQL_CYAN_URL;
+let DB_URI = "";
 
 function getDatabaseUri() {
   return process.env.NODE_ENV === "test"

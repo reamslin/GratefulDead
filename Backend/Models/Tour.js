@@ -6,6 +6,8 @@
  * http://creativecommons.org/licenses/by-nc-sa/4.0/
  */
 const db = require("../db");
+const { sqlForSetlistFilters } = require("../helpers");
+const ExpressError = require("./ExpressError");
 
 class Tour {
   constructor(id, name) {
@@ -36,6 +38,36 @@ class Tour {
       let { id, name } = result.rows[0];
       return new Tour(id, name);
     }
+  }
+
+  static async getByFilter(filters) {
+    const {
+      joinStatements,
+      whereConditions,
+      limitCondition,
+      offsetCondition,
+      values,
+    } = sqlForSetlistFilters(filters);
+    //Make sure to join on setlist if there are other joins
+    if (joinStatements) {
+      joinStatements.add(`INNER JOIN tour ON setlist.tour_id = tour.id`);
+    }
+    console.log(filters);
+    const sqlQuery = `SELECT DISTINCT tour.name FROM ${
+      !joinStatements ? "tour" : "setlist"
+    }
+            ${[...joinStatements].join(" ")}
+           ${whereConditions}
+           ${!whereConditions ? "WHERE" : "AND"}
+           tour.name IS NOT NULL
+           ORDER BY tour.name
+           ${limitCondition} ${offsetCondition}`;
+
+    console.log(sqlQuery);
+    const toursRes = await db.query(sqlQuery, values);
+
+    const tours = toursRes.rows.map((r) => r.name);
+    return tours;
   }
 }
 

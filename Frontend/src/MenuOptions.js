@@ -35,6 +35,7 @@ function MenuOptions({ toggle }) {
       let days = GDApi.getDays();
       let songs = GDApi.getSongs();
       let venues = GDApi.getVenues();
+      let tours = GDApi.getTours();
       let covers = GDApi.getCovers();
       let performers = GDApi.getPerformers();
       let states = GDApi.getStates();
@@ -46,6 +47,7 @@ function MenuOptions({ toggle }) {
         days,
         songs,
         venues,
+        tours,
         covers,
         performers,
         cities,
@@ -58,6 +60,7 @@ function MenuOptions({ toggle }) {
           days,
           songs,
           venues,
+          tours,
           covers,
           performers,
           cities,
@@ -70,6 +73,7 @@ function MenuOptions({ toggle }) {
             days,
             songs,
             venues,
+            tours,
             covers,
             performers,
             states,
@@ -90,6 +94,7 @@ function MenuOptions({ toggle }) {
         months,
         days,
         venues,
+        tours,
         songs,
         covers,
         performers,
@@ -108,6 +113,9 @@ function MenuOptions({ toggle }) {
       }
       if (!filters.venue) {
         venues = GDApi.getVenues(filters);
+      }
+      if (!filters.tour) {
+        tours = GDApi.getTours(filters);
       }
       if (!filters.song) {
         songs = GDApi.getSongs(filters);
@@ -133,6 +141,7 @@ function MenuOptions({ toggle }) {
         days,
         songs,
         venues,
+        tours,
         covers,
         performers,
         cities,
@@ -145,6 +154,7 @@ function MenuOptions({ toggle }) {
           days,
           songs,
           venues,
+          tours,
           covers,
           performers,
           cities,
@@ -156,6 +166,7 @@ function MenuOptions({ toggle }) {
             months,
             days,
             venues,
+            tours,
             songs,
             covers,
             performers,
@@ -210,6 +221,13 @@ function MenuOptions({ toggle }) {
       <Queries
         queryType="venue"
         title="Venues"
+        filters={filters}
+        setFilters={setFilters}
+        queries={queries}
+      />
+      <Queries
+        queryType="tour"
+        title="Tours"
         filters={filters}
         setFilters={setFilters}
         queries={queries}
