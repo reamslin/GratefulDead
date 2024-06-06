@@ -15,7 +15,7 @@ const Note = require("./Models/Note");
 const Tour = require("./Models/Tour");
 const Recording = require("./Models/Recording");
 
-const API_KEY = "MkReNmtdxXkVQlBM5pdEAbt2Y70jp90swwON";
+const API_KEY = "";
 const SCRAPE_BASE_URL = "https://archive.org/services/search/v1/scrape";
 const BASE_URL = "https://api.setlist.fm/rest/1.0";
 const GD_MBID = "6faa7ca7-0d99-4a5e-bfa6-1fd5037520c6";
