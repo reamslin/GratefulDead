@@ -1,6 +1,7 @@
 # Grateful Deadabase
 
 Hosted at: www.grateful-deadabase.com
+
 API documentation: https://app.swaggerhub.com/apis/altbrickart/gddb-api/1.0.0-oas3
 
 This application serves as an archive of the Grateful Dead's shows. It includes data about the setlists and recordings for the show when available.
