@@ -7,7 +7,7 @@
  */
 const axios = require("axios");
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://gddb-b7baf449e62a.herokuapp.com";
 
 class GDApi {
   static async getSetlistById(id) {
