@@ -1,7 +1,5 @@
 # Grateful Deadabase
 
-React App Deployed at: gd-db.netlify.app/
-API deployed at: gd-db.herokuapp.com
 
 This application serves as an archive of the Grateful Dead's shows. It includes data about the setlists and recordings for the show when available.
 Users are able to search through filters to find a show matching their filter requests. Users can select a recording to play in the music player.
